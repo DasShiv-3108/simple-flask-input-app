@@ -45,3 +45,6 @@ Dockerfile is intentionally written by the developer (learner).
 Build Docker image:
 ```bash
 docker build -t simple-flask-input-app .
+
+add >docker-compose.yml< file then: 
+docker compose up -d
