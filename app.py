@@ -6,14 +6,14 @@ app = Flask(__name__)
 HTML = """
 <!doctype html>
 <title>Simple Flask App</title>
-<h2>Simple Flask Input App</h2>
+<h2> Yaha pr likho </h2>
 <form method="post">
   <input type="text" name="message" placeholder="Type something" required>
   <button type="submit">Submit</button>
 </form>
 
 {% if msg %}
-  <p><b>You entered:</b> {{ msg }}</p>
+  <p><b>Apne yeh likha:</b> {{ msg }}</p>
 {% endif %}
 """
 
