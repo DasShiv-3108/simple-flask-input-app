@@ -2,54 +2,133 @@
 <html>
 <head>
     <title>Jenkins Practice</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
     <style>
         body {
+            margin: 0;
             height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #0f2027, #000);
+            overflow: hidden;
+            color: white;
         }
 
-        .box {
-            background: white;
-            padding: 30px;
-            width: 300px;
+        /* DevOps Loop */
+        .loop {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0,255,255,0.25);
+            animation: spin 30s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tools around the circle */
+        .tool {
+            position: absolute;
+            font-size: 38px;
+            color: #00e5ff;
+            animation: counter-spin 30s linear infinite;
+        }
+
+        /* Counter rotate so icons stay straight */
+        @keyframes counter-spin {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        /* Positions on circle */
+        .docker   { top: 5%;   left: 50%; transform: translateX(-50%); }
+        .jenkins  { top: 50%;  right: 5%; transform: translateY(-50%); }
+        .k8s      { bottom: 5%;left: 50%; transform: translateX(-50%); }
+        .git      { top: 50%;  left: 5%;  transform: translateY(-50%); }
+        .aws      { top: 15%;  right: 20%; }
+
+        /* Center card */
+        .card {
+            position: relative;
+            z-index: 2;
+            background: rgba(15,32,39,0.95);
+            padding: 35px;
+            width: 360px;
+            border-radius: 16px;
             text-align: center;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 40px rgba(0,255,255,0.4);
+            border: 1px solid rgba(0,255,255,0.3);
         }
 
         h2 {
-            margin-bottom: 20px;
+            color: #00e5ff;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #9ad7e5;
+            margin-bottom: 25px;
         }
 
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #102b3f;
+            color: white;
         }
 
         button {
-            padding: 8px 15px;
+            margin-top: 18px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(to right, #00e5ff, #1de9b6);
+            font-weight: bold;
             cursor: pointer;
         }
 
         .message {
-            margin-top: 15px;
-            color: green;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(0,229,255,0.15);
+            border: 1px solid rgba(0,229,255,0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <h2>Jenkins Practice</h2>
+    <!-- DevOps Loop -->
+    <div class="loop"></div>
+
+    <!-- Tools around the loop -->
+    <i class="tool docker fa-brands fa-docker"></i>
+    <i class="tool jenkins fa-brands fa-jenkins"></i>
+    <i class="tool k8s fa-brands fa-kubernetes"></i>
+    <i class="tool git fa-brands fa-git-alt"></i>
+    <i class="tool aws fa-brands fa-aws"></i>
+
+    <!-- Center Card -->
+    <div class="card">
+        <h2>⚙ Jenkins Practice</h2>
+        <div class="subtitle">Plan → Build → Test → Deploy → Monitor</div>
 
         <form method="POST">
-            <input type="text" name="user_input" placeholder="Enter something" required>
-            <button type="submit">Submit</button>
+            <input type="text" name="user_input" placeholder="Trigger pipeline..." required>
+            <button type="submit">Run</button>
         </form>
 
         {% if message %}
