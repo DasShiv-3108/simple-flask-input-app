@@ -1,28 +1,15 @@
- 
-from flask import Flask, request, render_template_string
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-HTML = """
-<!doctype html>
-<title>Simple Flask App</title>
-<h2> Yaha pr likho </h2>
-<form method="post">
-  <input type="text" name="message" placeholder="Type something" required>
-  <button type="submit">Submit</button>
-</form>
-
-{% if msg %}
-  <p><b>Apne yeh likha:</b> {{ msg }}</p>
-{% endif %}
-"""
-
 @app.route("/", methods=["GET", "POST"])
-def home():
-    msg = None
+def index():
+    message = ""
     if request.method == "POST":
-        msg = request.form.get("message")
-    return render_template_string(HTML, msg=msg)
+        user_input = request.form.get("user_input")
+        message = f"You entered: {user_input}"
+    return render_template("index.html", message=message)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
+
