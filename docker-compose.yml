@@ -1,7 +1,7 @@
 
 services: 
   flask_app:
-    Image: dasshiv3108/simple-flask-input-app
+    image: dasshiv3108/simple-flask-input-app
     container_name: flask_2
     ports:
       - "5000:5000"
