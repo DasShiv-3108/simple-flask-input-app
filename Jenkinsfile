@@ -55,7 +55,7 @@ post {
     failure {
         emailtext(
             subject: "Build failed",
-            body: "Bad NEWS: Build failed"
+            body: "Bad NEWS: Build failed",
             to: 'dasshiv3108@gmail.com'
             )
     }
