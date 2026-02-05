@@ -44,4 +44,20 @@ pipeline{
             }
         }
     }
+post {
+    success {
+        emailtext(
+            subject: "Build Successfull",
+            body: "Good news: Your build was successfull",
+            to: 'dasshiv3108@gmail.com'
+            )
+    }
+    failure {
+        emailtext(
+            subject: "Build failed",
+            body: "Bad NEWS: Build failed"
+            to: 'dasshiv3108@gmail.com'
+            )
+    }
+}
 }
